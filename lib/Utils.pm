@@ -275,7 +275,9 @@ sub findcmd {
 #
     my $rutil = shift;
 
-    my $util = `whereis $rutil`; my @utils = split / / => $util;
+    my $util = `whereis $rutil`;
+    chomp $util;
+    my @utils = split /\s+/ => $util;
 
     return $utils[1] if $utils[1] and -X $utils[1];
 
